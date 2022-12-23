@@ -2,6 +2,7 @@ apply plugin: 'io.spring.convention.spring-module'
 
 configurations {
 	hazelcast4
+	hazelcast5
 }
 
 dependencies {
@@ -12,6 +13,8 @@ dependencies {
 
 	hazelcast4(project(path: ":hazelcast4", configuration: 'classesOnlyElements'))
 	compileOnly(project(":hazelcast4"))
+	hazelcast4(project(path: ":hazelcast5", configuration: 'classesOnlyElements'))
+	compileOnly(project(":hazelcast5"))
 
 	testImplementation "jakarta.servlet:jakarta.servlet-api"
 	testImplementation "org.assertj:assertj-core"
@@ -21,6 +24,7 @@ dependencies {
 	testImplementation "org.springframework.security:spring-security-core"
 	testImplementation "org.junit.jupiter:junit-jupiter-api"
 	testRuntimeOnly project(':hazelcast4')
+	testRuntimeOnly project(':hazelcast5')
 	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 
 	integrationTestCompile "com.hazelcast:hazelcast-client"
